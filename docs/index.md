@@ -11,18 +11,19 @@ hero:
       text: Roles
       link: /roles
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Service Checklists
+      link: /media/checklists
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Big Picture
+      link: /big-picture
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Quick volunteer reference
+    details: Role-specific checklists and steps for media, video, and audio teams.
+  - title: Equipment guides
+    details: Room-by-room gear notes including cameras, projectors, lighting, and audio.
+  - title: Software how-tos
+    details: Walkthroughs for ProPresenter, Lightkey, Audacity, and other tools we use.
+  - title: Systems overview
+    details: See how the tech fits together before you start plugging things in.
 ---
-
