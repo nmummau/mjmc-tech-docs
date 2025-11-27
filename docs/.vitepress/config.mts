@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "MJMC Tech",
   description: "A documentation site for Mount Joy Mennonite Church technology",
+  base: '/mjmc-tech-docs/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
