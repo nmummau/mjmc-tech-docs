@@ -6,6 +6,32 @@ outline: deep
 
 How do the systems connect?
 
+## System diagrams
+
+### End-to-end signal flow
+
+```mermaid
+flowchart LR
+    MI[Media iMac] -->|HDMI| SC[Scaler/Switcher]
+    SC -->|HDMI| PJ1[Projector 1]
+    SC -->|HDMI| PJ2[Projector 2]
+    SC -->|HDMI| RM[Roland Video Mixer]
+    RM -->|HDMI/SDI| RMC[RMC-300A Camera Controller]
+    RM -->|HDMI| CONF[Confidence Monitor]
+    MI -->|USB| SB[Sound Board]
+    SB -->|LR Analog| RM
+```
+
+### Quick volunteer view
+
+```mermaid
+flowchart LR
+    MI[Media iMac] --> SC[Scaler] --> PJ[Projectors]
+    MI --> SB[Sound Board] --> RM[Roland Mixer]
+    RM --> RMC[RMC-300A]
+    RM --> CONF[Confidence Monitor]
+```
+
 ## Media iMac
 
 ### DMX Lighting
