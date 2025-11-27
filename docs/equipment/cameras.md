@@ -69,4 +69,4 @@ There is an IR remote for these cameras that you can use to aim at the cameras t
 
 ## Camcorder
 
-This is a camera on a tripod that moves around the worship center for various uses. There is a 50ft HDMI cord used to plug it into the [Roland V-8HD](../equipment/roland.md)
+This is a camera on a tripod that moves around the worship center for various uses. There is a 50ft HDMI cord used to plug it into the [Roland V-8HD](../equipment/worship-center-video.md#roland-v-8hd-video-switcher)
