@@ -9,7 +9,17 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Roles', link: '/roles' },
+      {
+        text: 'Service Checklists',
+        items: [
+          { text: 'Media', link: '/media/checklists' },
+          { text: 'Video', link: '/video/checklists' },
+          { text: 'Audio', link: '/audio/checklists' }
+        ]
+      },
+      { text: 'Big Picture', link: '/big-picture' },
+      { text: 'Known Issues', link: '/known-issues' }
     ],
 
     sidebar: [
