@@ -18,6 +18,12 @@ TODO: Catalog audio equipment, including microphones, di boxes, in-ear equipment
 
 ### Keyboard
 
-- Roland TODO model
+- Nord Stage 2 Hammer Action HA88
 
 ### Acoustic Guitar
+
+- Yamaha FX335C
+
+### Electric Bass
+
+- Squier Jazz Bass

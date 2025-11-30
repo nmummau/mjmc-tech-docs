@@ -16,9 +16,9 @@ This is the main projector for the worship center stage.
 
 This is the confidence projector on the back wall of the worship center. It's purpose is for the worship team vocalists to read lyrics, and for anyone speaking to be able to reference the slides while they speak.
 
-- Model: Christie
-- Manual: TODO
-- Installed: unknown
+- Model: Christie LW551i
+- [Manual](https://www.christiedigital.com/products/end-of-support/projectors/christie-lw551i/downloads)
+- Installed: est ~2013-2018
 
 ## Gym Projector
 
