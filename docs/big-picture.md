@@ -13,22 +13,71 @@ How do the systems connect?
 - Thunderbolt outputs carry video and audio. One runs through a WAVLINK dual-HDMI adapter to feed the Roland and the confidence path. The other feeds the main scaler for the main projector and desk monitor. The scaler passes audio to the sound board via the Whirlwind IMP 2 DI. The Roland returns a mixed feed to the stream iMac through the Marshall SDI-to-USB converter, with ASA 141 handling the audio path to stream.
 
 ```mermaid
-flowchart LR
-    MI[Media iMac]
-    MI -->|Thunderbolt| WL[WAVLINK dual HDMI adapter]
-    WL -->|HDMI| RM[Roland Video Mixer]
-    WL -->|HDMI| SC_CONF[Scaler/Switcher]
-    SC_CONF -->|HDMI| CONF[Confidence projector]
-    MI -->|Thunderbolt| SC_MAIN[Main scaler]
-    SC_MAIN -->|HDMI| PJ1[Main projector]
-    SC_MAIN -->|HDMI| DESK[Media desk monitor]
-    SC_MAIN -->|Audio feed| DI[Whirlwind IMP 2 Direct Box]
-    DI -->|Balanced audio| SB[Sound board]
-    SB -->|Audio mix| RM
-    RM -->|SDI A/V| SDIUSB[Marshall SDI-to-USB Converter]
-    SDIUSB -->|USB A/V| SIMAC[Streaming iMac]
-    RM -->|RCA audio| ASA141[ASA 141]
-    ASA141 -->|Audio to stream| SIMAC
+flowchart TB
+    subgraph SRC[Media iMac source]
+        direction TB
+        MI[Media iMac]
+    end
+
+    subgraph ROLAND[Roland Video Mixer]
+        direction TB
+        RM[Roland Video Mixer]
+    end
+
+    subgraph TB1[Thunderbolt path B: WAVLINK]
+        direction TB
+        MI -->|Thunderbolt| WL[WAVLINK dual HDMI]
+        WL -->|HDMI| SC_CONF[Scaler/Switcher]
+        SC_CONF -->|HDMI| CONF[Confidence projector]
+        WL -->|HDMI| RM
+    end
+
+    subgraph TB2[Thunderbolt path A: Main scaler]
+        direction TB
+        MI -->|Thunderbolt AV| SC_MAIN[Main scaler]
+        SC_MAIN -->|HDMI| PJ1[Main projector]
+        SC_MAIN -->|HDMI| DESK[Media desk monitor]
+        SC_MAIN -->|Audio feed| DI[Whirlwind IMP 2 DI]
+        DI -->|Balanced audio| SB[Sound board]
+        SB -->|Audio mix| RM
+    end
+
+    subgraph CAMS[PTZ camera video into Roland]
+        direction TB
+        CAM1[Cam 1 PTZ] -->|SDI| CAM1CVT[SDI-to-HDMI]
+        CAM1CVT -->|HDMI| RM
+        CAM2[Cam 2 PTZ] -->|SDI| CAM2CVT[SDI-to-HDMI]
+        CAM2CVT -->|HDMI| RM
+        CAM3[Cam 3 PTZ] -->|SDI| CAM3CVT[SDI-to-HDMI]
+        CAM3CVT -->|HDMI| RM
+    end
+
+    subgraph STREAM[Stream output chain]
+        direction TB
+        RM -->|SDI AV| SDIUSB[Marshall SDI-to-USB]
+        SDIUSB -->|USB AV| SIMAC[Streaming iMac]
+        RM -->|RCA audio| ASA141[ASA 141]
+        ASA141 -->|Audio to stream| SIMAC
+    end
+
+    classDef mac fill:#d2e3ff,stroke:#274b8f,stroke-width:1px,color:#0f1f3d;
+    classDef display fill:#c8efd6,stroke:#1f7a2e,stroke-width:1px,color:#0f2f1a;
+    classDef camera fill:#ffe3c7,stroke:#b65b00,stroke-width:1px,color:#4a1f00;
+    classDef control fill:#f3d9ff,stroke:#8b2bb0,stroke-width:1px,color:#3c0c52;
+
+    class MI,SIMAC mac;
+    class PJ1,DESK,CONF display;
+    class CAM1,CAM2,CAM3,CAM1CVT,CAM2CVT,CAM3CVT camera;
+```
+
+### PTZ control network
+
+```mermaid
+flowchart TB
+    CAM1[Cam 1 PTZ] -.Ethernet control.-> SW[PTZ switch]
+    CAM2[Cam 2 PTZ] -.Ethernet control.-> SW
+    CAM3[Cam 3 PTZ] -.Ethernet control.-> SW
+    SW -->|Ethernet| RMC[RMC-300A Controller]
 ```
 
 ## Media iMac
