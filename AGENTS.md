@@ -31,3 +31,4 @@ This repository contains the MJMC Tech documentation site built with VitePress. 
 ## Content Authoring Tips
 - Keep instructions task-focused and audience-aware (volunteers and staff). Provide exact room names, device labels, and menu paths when possible.
 - Cross-link related guides with absolute doc paths (e.g., `/equipment/cameras`) to keep navigation consistent with VitePress routing.
+- Mermaid diagrams are supported via `vitepress-plugin-mermaid`; use `mermaid` fenced code blocks and keep the VitePress config wrapped with `withMermaid`.

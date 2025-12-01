@@ -27,3 +27,9 @@ TODO finalize purpose and signal route. I think this is the audio from the iMac 
 TODO: finalize purpose and signal route. I think this converts RCA audio from the Roland V-8HD to the iMac used for the live stream audio.
 
 - [Info](https://www.extron.com/product/asa141)
+
+## WAVLINK HDMI Splitter for Dual Monitor
+
+WAVLINK HDMI Splitter Extended Display for Dual Monitor, USB A or USB-C to Dual HDMI Adapter, Multi-Monitor Display 3 Separate Screens for Windows and macOS,4K30Hz,1080p@60Hz
+
+- [Amazon product link](https://a.co/d/7PpIBUQ)

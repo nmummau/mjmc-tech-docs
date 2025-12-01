@@ -8,28 +8,27 @@ How do the systems connect?
 
 ## System diagrams
 
-### End-to-end signal flow
+### Media iMac video and audio routing
+
+- Thunderbolt outputs carry video and audio. One runs through a WAVLINK dual-HDMI adapter to feed the Roland and the confidence path. The other feeds the main scaler for the main projector and desk monitor. The scaler passes audio to the sound board via the Whirlwind IMP 2 DI. The Roland returns a mixed feed to the stream iMac through the Marshall SDI-to-USB converter, with ASA 141 handling the audio path to stream.
 
 ```mermaid
 flowchart LR
-    MI[Media iMac] -->|HDMI| SC[Scaler/Switcher]
-    SC -->|HDMI| PJ1[Projector 1]
-    SC -->|HDMI| PJ2[Projector 2]
-    SC -->|HDMI| RM[Roland Video Mixer]
-    RM -->|HDMI/SDI| RMC[RMC-300A Camera Controller]
-    RM -->|HDMI| CONF[Confidence Monitor]
-    MI -->|USB| SB[Sound Board]
-    SB -->|LR Analog| RM
-```
-
-### Quick volunteer view
-
-```mermaid
-flowchart LR
-    MI[Media iMac] --> SC[Scaler] --> PJ[Projectors]
-    MI --> SB[Sound Board] --> RM[Roland Mixer]
-    RM --> RMC[RMC-300A]
-    RM --> CONF[Confidence Monitor]
+    MI[Media iMac]
+    MI -->|Thunderbolt| WL[WAVLINK dual HDMI adapter]
+    WL -->|HDMI| RM[Roland Video Mixer]
+    WL -->|HDMI| SC_CONF[Scaler/Switcher]
+    SC_CONF -->|HDMI| CONF[Confidence projector]
+    MI -->|Thunderbolt| SC_MAIN[Main scaler]
+    SC_MAIN -->|HDMI| PJ1[Main projector]
+    SC_MAIN -->|HDMI| DESK[Media desk monitor]
+    SC_MAIN -->|Audio feed| DI[Whirlwind IMP 2 Direct Box]
+    DI -->|Balanced audio| SB[Sound board]
+    SB -->|Audio mix| RM
+    RM -->|SDI A/V| SDIUSB[Marshall SDI-to-USB Converter]
+    SDIUSB -->|USB A/V| SIMAC[Streaming iMac]
+    RM -->|RCA audio| ASA141[ASA 141]
+    ASA141 -->|Audio to stream| SIMAC
 ```
 
 ## Media iMac
