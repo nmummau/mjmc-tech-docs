@@ -1,7 +1,3 @@
----
-outline: deep
----
-
 # Datavideo
 
 This page describes miscellaneous software for configuring the [Datavideo equipment](../equipment/cameras.md).

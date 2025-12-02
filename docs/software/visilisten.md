@@ -1,7 +1,3 @@
----
-outline: deep
----
-
 # Visi Listen
 
 - Used for worship team's in-ear monitoring.

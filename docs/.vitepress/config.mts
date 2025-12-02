@@ -11,45 +11,53 @@ export default withMermaid(defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Roles', link: '/roles' },
-      { text: 'Run a service', link: '/media/checklists' },
-      { text: 'Big Picture', link: '/big-picture' }
+      {
+        text: 'Service Checklists',
+        items: [
+          { text: 'Media', link: '/media/checklists' },
+          { text: 'Video', link: '/video/checklists' },
+          { text: 'Audio', link: '/audio/checklists' }
+        ]
+      },
+      { text: 'Big Picture', link: '/big-picture' },
+      { text: 'Known Issues', link: '/known-issues' }
     ],
 
     sidebar: [
       {
-        text: 'Overview & infrastructure',
+        text: 'Big Picture',
         items: [
           { text: 'How the systems connect', link: '/big-picture' },
           { text: 'Power supply', link: '/power-supply' },
-          { text: 'Lighting', link: '/lighting' }
+          { text: 'Lighting', link: '/lighting' },
+          { text: 'TODOs', link: '/todo' }
         ]
       },
       {
-        text: 'Run a service',
+        text: 'Service Checklists',
         items: [
-          { text: 'Roles', link: '/roles' },
-          { text: 'Media checklist', link: '/media/checklists' },
-          { text: 'Video checklist', link: '/video/checklists' },
-          { text: 'Audio checklist', link: '/audio/checklists' }
+          { text: 'Media', link: '/media/checklists' },
+          { text: 'Video', link: '/video/checklists' },
+          { text: 'Audio', link: '/audio/checklists' }
         ]
       },
       {
         text: 'Equipment',
         items: [
           { text: 'Cameras', link: '/equipment/cameras' },
-          { text: 'Worship Center Video', link: '/equipment/worship-center-video' },
-          { text: 'Worship Center Audio', link: '/equipment/worship-center-audio' },
-          { text: 'Lighting', link: '/equipment/lighting' },
+          { text: 'Classrooms', link: '/equipment/classrooms' },
+          { text: 'Clocks', link: '/equipment/clocks' },
+          { text: 'Gym', link: '/equipment/gym' },
           { text: 'iMacs', link: '/equipment/imacs' },
+          { text: 'iPads', link: '/equipment/ipads' },
+          { text: 'Lighting', link: '/equipment/lighting' },
+          { text: 'Next Gen', link: '/equipment/next-gen' },
+          { text: 'PCs', link: '/equipment/pcs' },
+          { text: 'Printers', link: '/equipment/printers' },
           { text: 'Projectors', link: '/equipment/projectors' },
           { text: 'TVs', link: '/equipment/tvs' },
-          { text: 'PCs', link: '/equipment/pcs' },
-          { text: 'iPads', link: '/equipment/ipads' },
-          { text: 'Classrooms', link: '/equipment/classrooms' },
-          { text: 'Gym', link: '/equipment/gym' },
-          { text: 'Next Gen', link: '/equipment/next-gen' },
-          { text: 'Printers', link: '/equipment/printers' },
-          { text: 'Clocks', link: '/equipment/clocks' }
+          { text: 'Worship Center Audio', link: '/equipment/worship-center-audio' },
+          { text: 'Worship Center Video', link: '/equipment/worship-center-video' }
         ]
       },
       {
@@ -60,13 +68,6 @@ export default withMermaid(defineConfig({
           { text: 'Lightkey', link: '/software/lightkey' },
           { text: 'ProPresenter', link: '/software/propresenter' },
           { text: 'Visi Listen', link: '/software/visilisten' }
-        ]
-      },
-      {
-        text: 'Reference',
-        items: [
-          { text: 'TODOs', link: '/todo' },
-          { text: 'Known issues', link: '/known-issues' }
         ]
       }
     ],
