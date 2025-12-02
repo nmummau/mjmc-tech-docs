@@ -4,8 +4,7 @@ layout: home
 
 hero:
   name: "MJMC Tech"
-  text: "A documentation site for Mount Joy Mennonite Church technology"
-  tagline: stop guessing how things work
+  tagline: A documentation site for Mount Joy Mennonite Church technology
   actions:
     - theme: alt
       text: Roles
@@ -25,5 +24,5 @@ features:
   - title: Software how-tos
     details: Walkthroughs for ProPresenter, Lightkey, Audacity, and other tools we use.
   - title: Systems overview
-    details: See how the tech fits together before you start plugging things in.
+    details: See how the tech fits together.
 ---
