@@ -6,15 +6,18 @@ hero:
   name: "MJMC Tech"
   tagline: A documentation site for Mount Joy Mennonite Church technology
   actions:
-    - theme: alt
-      text: Roles
-      link: /roles
     - theme: brand
-      text: Service Checklists
-      link: /media/checklists
-    - theme: alt
       text: Big Picture
       link: /big-picture
+    - theme: alt
+      text: Media Checklists
+      link: /media/checklists
+    - theme: alt
+      text: Video Checklists
+      link: /video/checklists
+    - theme: alt
+      text: Audio Checklists
+      link: /audio/checklists
 
 features:
   - title: Quick volunteer reference
