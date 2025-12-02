@@ -10,5 +10,4 @@ flowchart TB
 
     MI -->|USB 2.0| ENTTEC
     ENTTEC -->|DMX| DMXCHAIN
-    LIGHTKEY -.control via USB.-> ENTTEC
 ```
