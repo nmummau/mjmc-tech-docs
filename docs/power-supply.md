@@ -1,26 +1,5 @@
 # Power supply
 
-```mermaid
-flowchart TB
-    PS[Power strip 120VAC]
-
-    CAM1_DC[Cam 1 AC-to-DC 12V 3A]
-    CAM2_DC[Cam 2 AC-to-DC 12V 3A]
-    CAM3_DC[Cam 3 AC-to-DC 12V 3A]
-
-    CAM1[Cam 1 PTZ]
-    CAM2[Cam 2 PTZ]
-    CAM3[Cam 3 PTZ]
-
-    PS -->|120 VAC| CAM1_DC
-    PS -->|120 VAC| CAM2_DC
-    PS -->|120 VAC| CAM3_DC
-
-    CAM1_DC -->|18 AWG DC run >100 ft| CAM1
-    CAM2_DC -->|18 AWG DC run >100 ft| CAM2
-    CAM3_DC -->|18 AWG DC run >100 ft| CAM3
-```
-
 ## UPS and powered devices
 
 ```mermaid
@@ -65,3 +44,30 @@ flowchart TB
     FURMAN --> A_MON
     FURMAN --> MIMON
 ```
+
+## Cameras
+
+```mermaid
+flowchart TB
+    PS[Power strip 120VAC]
+
+    CAM1_DC[Cam 1 AC-to-DC 12V 3A]
+    CAM2_DC[Cam 2 AC-to-DC 12V 3A]
+    CAM3_DC[Cam 3 AC-to-DC 12V 3A]
+
+    CAM1[Cam 1 PTZ]
+    CAM2[Cam 2 PTZ]
+    CAM3[Cam 3 PTZ]
+
+    PS -->|120 VAC| CAM1_DC
+    PS -->|120 VAC| CAM2_DC
+    PS -->|120 VAC| CAM3_DC
+
+    CAM1_DC -->|18 AWG DC run >100 ft| CAM1
+    CAM2_DC -->|18 AWG DC run >100 ft| CAM2
+    CAM3_DC -->|18 AWG DC run >100 ft| CAM3
+```
+
+## Sound Board
+
+TODO

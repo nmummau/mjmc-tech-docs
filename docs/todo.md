@@ -8,3 +8,4 @@
 - Confirm which Extron device serves the confidence path (currently labeled DSC 301 HD — verify).
 - Check whether camera power supplies are on the UPS/Furman chain or on separate mains.
 - Identify any intermediate power supplies between the Furman and downstream devices and document them.
+- Sound board power supply
