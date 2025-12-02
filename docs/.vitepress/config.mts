@@ -10,7 +10,7 @@ export default withMermaid(defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Roles', link: '/roles' },
+      { text: 'Big Picture', link: '/big-picture' },
       {
         text: 'Service Checklists',
         items: [
@@ -19,7 +19,6 @@ export default withMermaid(defineConfig({
           { text: 'Audio', link: '/audio/checklists' }
         ]
       },
-      { text: 'Big Picture', link: '/big-picture' },
       { text: 'Known Issues', link: '/known-issues' }
     ],
 
