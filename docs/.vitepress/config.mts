@@ -29,6 +29,7 @@ export default withMermaid(defineConfig({
         items: [
           { text: 'How the systems connect', link: '/big-picture' },
           { text: 'Power supply', link: '/power-supply' },
+          { text: 'Lighting', link: '/lighting' },
           { text: 'TODOs', link: '/todo' }
         ]
       },
