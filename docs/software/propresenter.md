@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # ProPresenter
 
 - [ProPresenter Tutorials](https://www.renewedvision.com/propresenter/tutorials)

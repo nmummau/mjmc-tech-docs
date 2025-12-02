@@ -4,18 +4,26 @@ layout: home
 
 hero:
   name: "MJMC Tech"
-  text: "A documentation site for Mount Joy Mennonite Church technology"
-  tagline: stop guessing how things work
+  tagline: A documentation site for Mount Joy Mennonite Church technology
   actions:
-    - theme: alt
-      text: Roles
-      link: /roles
     - theme: brand
-      text: Service Checklists
-      link: /media/checklists
-    - theme: alt
       text: Big Picture
       link: /big-picture
+    - theme: alt
+      text: Media Checklists
+      link: /media/checklists
+    - theme: alt
+      text: Video Checklist
+      link: /video/checklists
+    - theme: alt
+      text: Audio Checklist
+      link: /audio/checklists
+    - theme: alt
+      text: Equipment
+      link: /equipment/cameras
+    - theme: alt
+      text: Software
+      link: /software/audacity
 
 features:
   - title: Quick volunteer reference
@@ -25,5 +33,5 @@ features:
   - title: Software how-tos
     details: Walkthroughs for ProPresenter, Lightkey, Audacity, and other tools we use.
   - title: Systems overview
-    details: See how the tech fits together before you start plugging things in.
+    details: See how the tech fits together.
 ---

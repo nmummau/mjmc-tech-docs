@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # Lightkey
 
 - [Lightkey Tutorials](https://lightkeyapp.com/en/help/videos)

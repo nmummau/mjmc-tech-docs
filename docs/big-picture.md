@@ -4,7 +4,7 @@ outline: deep
 
 # Big Picture
 
-How do the systems connect?
+How do the systems connect? Focusing on the worship center production systems for this section.
 
 ## System diagrams
 
