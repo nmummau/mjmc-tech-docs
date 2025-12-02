@@ -10,7 +10,7 @@ How do the systems connect?
 
 ### Media iMac video and audio routing
 
-- Thunderbolt outputs carry video and audio. One runs through a WAVLINK dual-HDMI adapter to feed the Roland and the confidence path. The other feeds the main scaler for the main projector and desk monitor. The scaler passes audio to the sound board via the Whirlwind IMP 2 DI. The Roland returns a mixed feed to the stream iMac through the Marshall SDI-to-USB converter, with ASA 141 handling the audio path to stream.
+Two Thunderbolt paths leave the Media iMac: one hits the WAVLINK dual-HDMI for the Roland and confidence projector, and the other feeds the Extron IN1608 switcher/scaler for the main projector and desk monitor (via DSC 301 HD and DTP HDMI 230 Tx). Audio is broken out to the sound board through the Whirlwind DI. The Roland mixes video + audio to the streaming iMac through the Marshall SDI-to-USB, with an ASA 141 audio tap as backup.
 
 ```mermaid
 flowchart TB
@@ -21,25 +21,27 @@ flowchart TB
 
     subgraph ROLAND[Roland Video Mixer]
         direction TB
-        RM[Roland Video Mixer]
+        RM[Roland V-8HD]
+    end
+
+    subgraph TB2[Thunderbolt path A: Extron IN1608 main switcher]
+        direction TB
+        MI -->|Thunderbolt-to-HDMI| SC_MAIN[Extron IN1608]
+        SC_MAIN -->|HDMI| DSC301[Extron DSC 301 HD]
+        DSC301 -->|HDMI| DTP_TX[Extron DTP HDMI 230 Tx]
+        DTP_TX -->|DTP over Cat| PJ1[Main projector]
+        SC_MAIN -->|HDMI| DESK[Media desk monitor]
+        SC_MAIN -->|Analog audio RCA| DI[Whirlwind IMP 2 DI]
+        DI -->|Balanced audio XLR| SB[Sound board]
+        SB -->|Audio mix RCA| RM
     end
 
     subgraph TB1[Thunderbolt path B: WAVLINK]
         direction TB
         MI -->|Thunderbolt| WL[WAVLINK dual HDMI]
-        WL -->|HDMI| SC_CONF[Scaler/Switcher]
+        WL -->|HDMI| SC_CONF[Verify]
         SC_CONF -->|HDMI| CONF[Confidence projector]
         WL -->|HDMI| RM
-    end
-
-    subgraph TB2[Thunderbolt path A: Main scaler]
-        direction TB
-        MI -->|Thunderbolt AV| SC_MAIN[Main scaler]
-        SC_MAIN -->|HDMI| PJ1[Main projector]
-        SC_MAIN -->|HDMI| DESK[Media desk monitor]
-        SC_MAIN -->|Audio feed| DI[Whirlwind IMP 2 DI]
-        DI -->|Balanced audio| SB[Sound board]
-        SB -->|Audio mix| RM
     end
 
     subgraph CAMS[PTZ camera video into Roland]
@@ -54,11 +56,21 @@ flowchart TB
 
     subgraph STREAM[Stream output chain]
         direction TB
-        RM -->|SDI AV| SDIUSB[Marshall SDI-to-USB]
-        SDIUSB -->|USB AV| SIMAC[Streaming iMac]
+        RM -->|HDMI AV| SDIUSB[Marshall SDI-to-USB]
+        SDIUSB -->|HDMI loop-out| RMON[Roland monitor]
+        SDIUSB -->|USB 3.0 AV| SIMAC[Streaming iMac]
         RM -->|RCA audio| ASA141[ASA 141]
         ASA141 -->|Audio to stream| SIMAC
     end
+
+    click WL "/mjmc-tech-docs/equipment/worship-center-video.html#wavlink-hdmi-splitter-for-dual-monitor" "Open WAVLINK in equipment docs"
+    click RM "/mjmc-tech-docs/equipment/worship-center-video.html#roland-v-8hd-video-switcher" "Open Roland V-8HD details"
+    click SC_MAIN "/mjmc-tech-docs/equipment/worship-center-video.html#extron-in1608" "Open Extron IN1608 details"
+    click DSC301 "/mjmc-tech-docs/equipment/worship-center-video.html#extron-dsc-301-hd" "Open Extron DSC 301 HD details"
+    click DTP_TX "/mjmc-tech-docs/equipment/worship-center-video.html#extron-dtp-hdmi-230-tx" "Open Extron DTP HDMI 230 Tx details"
+    click DI "/mjmc-tech-docs/equipment/worship-center-video.html#whirlwind-imp-2-direct-box" "Open Whirlwind DI details"
+    click SDIUSB "/mjmc-tech-docs/equipment/worship-center-video.html#marshall-sdi-to-usb-converter" "Open Marshall SDI-to-USB details"
+    click ASA141 "/mjmc-tech-docs/equipment/worship-center-video.html#asa-141" "Open ASA 141 details"
 
     classDef mac fill:#d2e3ff,stroke:#274b8f,stroke-width:1px,color:#0f1f3d;
     classDef display fill:#c8efd6,stroke:#1f7a2e,stroke-width:1px,color:#0f2f1a;
@@ -66,18 +78,26 @@ flowchart TB
     classDef control fill:#f3d9ff,stroke:#8b2bb0,stroke-width:1px,color:#3c0c52;
 
     class MI,SIMAC mac;
-    class PJ1,DESK,CONF display;
+    class PJ1,DESK,CONF,RMON display;
     class CAM1,CAM2,CAM3,CAM1CVT,CAM2CVT,CAM3CVT camera;
 ```
 
 ### PTZ control network
 
+The PTZ cameras share a closed control network: each camera home-runs Ethernet to the PTZ switch, which feeds the RMC-300A controller for pan/tilt/zoom control.
+
 ```mermaid
 flowchart TB
-    CAM1[Cam 1 PTZ] -.Ethernet control.-> SW[PTZ switch]
-    CAM2[Cam 2 PTZ] -.Ethernet control.-> SW
-    CAM3[Cam 3 PTZ] -.Ethernet control.-> SW
+    CAM1[Cam 1 PTZ] -.Ethernet.-> SW[PTZ switch]
+    CAM2[Cam 2 PTZ] -.Ethernet.-> SW
+    CAM3[Cam 3 PTZ] -.Ethernet.-> SW
     SW -->|Ethernet| RMC[RMC-300A Controller]
+
+    click CAM1 "/mjmc-tech-docs/equipment/cameras.html#ptc-150-cameras" "Open camera wiring details"
+    click CAM2 "/mjmc-tech-docs/equipment/cameras.html#ptc-150-cameras" "Open camera wiring details"
+    click CAM3 "/mjmc-tech-docs/equipment/cameras.html#ptc-150-cameras" "Open camera wiring details"
+    click SW "/mjmc-tech-docs/equipment/cameras.html#switch" "Open PTZ switch details"
+    click RMC "/mjmc-tech-docs/equipment/cameras.html#rmc-300a-controller" "Open RMC-300A details"
 ```
 
 ## Media iMac

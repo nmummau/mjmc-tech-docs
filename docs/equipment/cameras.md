@@ -62,6 +62,10 @@ There is an IR remote for these cameras that you can use to aim at the cameras t
 - Firmware updated: November 2025.
 - DVIP updated: November 26, 2025. This was necessary following the RMC-300A having it's firmware updated.
 
+## Switch
+
+A network switch connects the cameras to the controller via ethernet.
+
 ## Wiring
 
 - PTC-150 cameras provide an SDI video signal. This is converted under the media deak from SDI-to-HDMI. HDMI then goes into the [Roland V-8HD](../equipment/worship-center-video.md#roland-v-8hd-video-switcher).
