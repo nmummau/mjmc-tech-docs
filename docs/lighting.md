@@ -2,10 +2,11 @@
 
 ```mermaid
 flowchart TB
-    MI[Media iMac]
+    subgraph MI[Media iMac]
+        LIGHTKEY[Lightkey software]
+    end
     ENTTEC[ENTTEC DMX USB Pro Mk2]
     DMXCHAIN[DMX lighting chain]
-    LIGHTKEY[Lightkey software]
 
     MI -->|USB 2.0| ENTTEC
     ENTTEC -->|DMX| DMXCHAIN
