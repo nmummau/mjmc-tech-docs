@@ -6,4 +6,4 @@ outline: deep
 
 ## Media iMac
 
-## Video iMac
+## Stream iMac

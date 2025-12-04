@@ -10,7 +10,7 @@ How do the systems connect?
 
 ### Media iMac video and audio routing
 
-Two Thunderbolt paths leave the Media iMac: one hits the WAVLINK dual-HDMI for the Roland and confidence projector, and the other feeds the Extron IN1608 switcher/scaler for the main projector and desk monitor (via DSC 301 HD and DTP HDMI 230 Tx). Audio is broken out to the sound board through the Whirlwind DI. The Roland mixes video + audio to the streaming iMac through the Marshall SDI-to-USB, with an ASA 141 audio tap as backup.
+Two Thunderbolt paths leave the Media iMac: one hits the WAVLINK dual-HDMI for the Roland and Confidence projector, and the other feeds the Extron IN1608 switcher/scaler for the Main Projector and the Dell desk monitor. Audio is broken out via the IN1608 amplified L/R output to the Whirlwind DI and into sound board mic/line input 23. The sound board’s output 10 (XLR) hits the ASA 141 to convert to RCA for the Roland. The Roland sends video + audio to the Stream iMac through the Marshall SDI-to-USB. The Roland also feeds the lobby TV and the HP desk monitor.
 
 ```mermaid
 flowchart TB
@@ -22,26 +22,28 @@ flowchart TB
     subgraph ROLAND[Roland Video Mixer]
         direction TB
         RM[Roland V-8HD]
+        RMON[HP 27er desk monitor]
+        RM -->|Output 3 HDMI| RMON
     end
 
-    subgraph TB2[Thunderbolt path A: Extron IN1608 main switcher]
+    subgraph TB2[Thunderbolt path A]
         direction TB
-        MI -->|Thunderbolt-to-HDMI| SC_MAIN[Extron IN1608]
-        SC_MAIN -->|HDMI| DSC301[Extron DSC 301 HD]
-        DSC301 -->|HDMI| DTP_TX[Extron DTP HDMI 230 Tx]
-        DTP_TX -->|DTP over Cat| PJ1[Main projector]
-        SC_MAIN -->|HDMI| DESK[Media desk monitor]
-        SC_MAIN -->|Analog audio RCA| DI[Whirlwind IMP 2 DI]
-        DI -->|Balanced audio XLR| SB[Sound board]
-        SB -->|Audio mix RCA| RM
+        MI -->|Thunderbolt-to-HDMI<br/>Input 5| SC_MAIN[Extron IN1608]
+        SC_MAIN -->|DTP over Cat| PJ1[Main projector]
+        SC_MAIN -->|HDMI to DVI| DESK[Dell desk monitor]
+        SC_MAIN -->|Amplified L/R out| DI[Whirlwind IMP 2 DI]
+        DI -->|XLR to input 23| SB[Sound board]
+        SB -->|Output 10 XLR| ASA141[ASA 141]
+        ASA141 -->|RCA to Roland| RM
     end
 
-    subgraph TB1[Thunderbolt path B: WAVLINK]
+    subgraph TB1[Thunderbolt path B]
         direction TB
         MI -->|Thunderbolt| WL[WAVLINK dual HDMI]
-        WL -->|HDMI| SC_CONF[Verify]
-        SC_CONF -->|HDMI| CONF[Confidence projector]
         WL -->|HDMI| RM
+        WL -->|HDMI| DSC_CONF[Extron DSC 301 HD]
+        DSC_CONF -->|HDMI| DTP_TX[Extron DTP HDMI 230 Tx]
+        DTP_TX -->|DTP over Cat| CONF[Confidence projector]
     end
 
     subgraph CAMS[PTZ camera video into Roland]
@@ -52,25 +54,41 @@ flowchart TB
         CAM2CVT -->|HDMI| RM
         CAM3[Cam 3 PTZ] -->|SDI| CAM3CVT[SDI-to-HDMI]
         CAM3CVT -->|HDMI| RM
+        CAM4[Camcorder] -->|HDMI| RM
     end
 
     subgraph STREAM[Stream output chain]
         direction TB
-        RM -->|HDMI AV| SDIUSB[Marshall SDI-to-USB]
-        SDIUSB -->|HDMI loop-out| RMON[Roland monitor]
-        SDIUSB -->|USB 3.0 AV| SIMAC[Streaming iMac]
-        RM -->|RCA audio| ASA141[ASA 141]
-        ASA141 -->|Audio to stream| SIMAC
+        RM -->|Output 1 HDMI| SDIUSB[Marshall SDI-to-USB]
+        SDIUSB -->|USB 3.0 AV| SIMAC[Stream iMac]
+        SDIUSB -->|HDMI to IN1608| SC_MAIN
     end
 
+    subgraph LOBBYFEED[Lobby TV chain]
+        direction TB
+        RM -->|Output 2 HDMI| DLHD70[DL-HD70 extender]
+        DLHD70 -->|HDBT OUT over Cat| CATAR[CATa 1R772 receiver]
+        CATAR -->|HDMI| LOBBY[Lobby TV]
+    end
+
+    click MI "/mjmc-tech-docs/equipment/imacs.html#media-imac" "Open Media iMac in equipment docs"
+    click SIMAC "/mjmc-tech-docs/equipment/imacs.html#stream-imac" "Open Stream iMac in equipment docs"
+    click PJ1 "/mjmc-tech-docs/equipment/projectors.html#main-projector" "Open Main Projector in equipment docs"
+    click CONF "/mjmc-tech-docs/equipment/projectors.html#confidence-projector" "Open Confidence Projector in equipment docs"
+    click RMON "/mjmc-tech-docs/equipment/worship-center-video.html#hp-27er-monitor" "Open HP 27er monitor in equipment docs"
+    click DESK "/mjmc-tech-docs/equipment/worship-center-video.html#dell-monitor" "Open Dell monitor in equipment docs"
     click WL "/mjmc-tech-docs/equipment/worship-center-video.html#wavlink-hdmi-splitter-for-dual-monitor" "Open WAVLINK in equipment docs"
     click RM "/mjmc-tech-docs/equipment/worship-center-video.html#roland-v-8hd-video-switcher" "Open Roland V-8HD details"
     click SC_MAIN "/mjmc-tech-docs/equipment/worship-center-video.html#extron-in1608" "Open Extron IN1608 details"
-    click DSC301 "/mjmc-tech-docs/equipment/worship-center-video.html#extron-dsc-301-hd" "Open Extron DSC 301 HD details"
+    click DSC_CONF "/mjmc-tech-docs/equipment/worship-center-video.html#extron-dsc-301-hd" "Open Extron DSC 301 HD details"
+    click ASA141 "/mjmc-tech-docs/equipment/worship-center-video.html#asa-141" "Open ASA 141 details"
     click DTP_TX "/mjmc-tech-docs/equipment/worship-center-video.html#extron-dtp-hdmi-230-tx" "Open Extron DTP HDMI 230 Tx details"
     click DI "/mjmc-tech-docs/equipment/worship-center-video.html#whirlwind-imp-2-direct-box" "Open Whirlwind DI details"
     click SDIUSB "/mjmc-tech-docs/equipment/worship-center-video.html#marshall-sdi-to-usb-converter" "Open Marshall SDI-to-USB details"
-    click ASA141 "/mjmc-tech-docs/equipment/worship-center-video.html#asa-141" "Open ASA 141 details"
+    click CAM1 "/mjmc-tech-docs/equipment/cameras.html#ptc-150-cameras" "Open camera wiring details"
+    click CAM2 "/mjmc-tech-docs/equipment/cameras.html#ptc-150-cameras" "Open camera wiring details"
+    click CAM3 "/mjmc-tech-docs/equipment/cameras.html#ptc-150-cameras" "Open camera wiring details"
+    click CAM4 "/mjmc-tech-docs/equipment/cameras.html#panasonic-hc-v180-camcorder" "Open camcorder details"
 
     classDef mac fill:#d2e3ff,stroke:#274b8f,stroke-width:1px,color:#0f1f3d;
     classDef display fill:#c8efd6,stroke:#1f7a2e,stroke-width:1px,color:#0f2f1a;
@@ -78,8 +96,8 @@ flowchart TB
     classDef control fill:#f3d9ff,stroke:#8b2bb0,stroke-width:1px,color:#3c0c52;
 
     class MI,SIMAC mac;
-    class PJ1,DESK,CONF,RMON display;
-    class CAM1,CAM2,CAM3,CAM1CVT,CAM2CVT,CAM3CVT camera;
+    class PJ1,DESK,CONF,RMON,LOBBY display;
+    class CAM1,CAM2,CAM3,CAM4,CAM1CVT,CAM2CVT,CAM3CVT camera;
 ```
 
 ### PTZ control network
@@ -137,10 +155,9 @@ Receives video signal from iMac for use on stream via Thunderbolt-to-HDMI.
 
 - The video mixer receives audio signal from sound board for use on stream via XLR-to-RCA (MIX 10)
 
-### Streaming iMac
+### Stream iMac
 
-- The video mixer sends a final combined audio/video output to the streaming iMac, connected via USB ([Marshall SDI to USB converter](./equipment/worship-center-video.md#sdi-to-usb-converter))
-- TODO this is confusing please rewrite after you get it
+- The video mixer sends a final combined audio/video output to the stream iMac, connected via USB ([Marshall SDI to USB converter](./equipment/worship-center-video.md#sdi-to-usb-converter))
 
 ## Camera Controller
 
@@ -168,9 +185,9 @@ Receives video signal from iMac for use on stream via Thunderbolt-to-HDMI.
 
 The uninterruptible power supply (UPS) was replaced in early 2025. Last two have died at approziately 3 years.
 
-### Camcorder HDMI
+### HDMI to Camcorder 
 
-The long HDMI cable to the front is for external camcorder
+The long HDMI cable to the front is for external [Panasonic Camcorder](./equipment/cameras.md#panasonic-hc-v180-camcorder)
 
 ### QSC Speakers
 

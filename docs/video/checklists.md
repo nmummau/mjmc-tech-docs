@@ -47,7 +47,7 @@ outline: deep
 1. On the iMac
     1. In Google Chrome, go to the YouTube Studio dashboard and verify that the YouTube streaming link for today's date is PUBLIC.
     1. Within the eCamm software, choose today's scheduled stream and verify countdown clock is running.
-1. (optional) Plug in camcorder on tripod and adjust angle for use during service.
+1. (optional) Plug in [Panasonic Camcorder](../equipment/cameras.md#panasonic-hc-v180-camcorder) on tripod and adjust angle for use during service.
 1. Using printed service order
     1. Plan/save camera angles for effective service capture. Camera preset list is located on Video iMac in the "notes" application. Take note which worship team member is leading each song and where/when speakers are on stage.
     1. Note DSK on/off setting for showing lyrics, videos, and other presentation elements.

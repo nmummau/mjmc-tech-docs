@@ -71,6 +71,6 @@ A network switch connects the cameras to the controller via ethernet.
 - PTC-150 cameras provide an SDI video signal. This is converted under the media deak from SDI-to-HDMI. HDMI then goes into the [Roland V-8HD](../equipment/worship-center-video.md#roland-v-8hd-video-switcher).
 - The RMC-300A and the PTC-150 cameras are all connected to a network switch under the media desk. This is a "closed" network that is not connected to internet. This uses [Datavideo's DVIP control protocol](https://www.datavideo.com/global/product/DVIP). This enables the controller to talk to the cameras.
 
-## Camcorder
+## Panasonic HC-V180 Camcorder
 
 This is a camera on a tripod that moves around the worship center for various uses. There is a 50ft HDMI cord used to plug it into the [Roland V-8HD](../equipment/worship-center-video.md#roland-v-8hd-video-switcher)
