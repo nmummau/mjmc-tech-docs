@@ -215,3 +215,28 @@ The long HDMI cable to the front is for external [Panasonic Camcorder](./equipme
 *behind stage*
 
 - Only one feed to the sound board per channel, but it can be patched to any line to the stage in any location. Channels from the sound board are wired into the patch bays, then the snakes to the stage allow you to choose location (R/L wall, R/L floor, C floor, Front Bench/pew)
+
+## Amps behind stage
+
+This section is chicken scratch as I took pencil notes at one point. TODO is to clear these up but here are my notes:
+
+There are 4 amps stacked. We'll go from top to bottom:
+
+- 1 top - amp over in drop ceiling
+- 2 - amp old not used
+- 3 - amp old not used
+- 3 - DSP 322 - dig sig processor timing & EQ Joe W helped set this up in the room
+
+Then there are 3 other stacks
+- surge
+- lobby power
+- patch
+
+## Sound Board
+
+This is also a pencil note I wanted to preserve
+
+Matrix
+- Lobby
+- CD
+- Hearing Assistance
